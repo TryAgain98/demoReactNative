@@ -3,15 +3,25 @@ import {
     Image,
     Text,
     View,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity,
+    Alert
 } from 'react-native'
-import SkiiImage from '../assets/ski.png' 
+import SkiiImage from '../assets/ski.png'
 
 export default function CategoryListItem(props) {
-    return <View style={styles.container}>
-        <Text style={styles.title}>Category List Item</Text>
-        <Image style={styles.categoryImage} source={SkiiImage} />
-    </View>
+    const { category } = props
+    return (
+        <TouchableOpacity activeOpacity={0.8} onPress={() => {
+            Alert.alert('click');
+        }} >
+            <View style={styles.container}>
+                <Text style={styles.title}>{category.name}</Text>
+                <Image style={styles.categoryImage} source={SkiiImage} />
+            </View>
+        </TouchableOpacity>
+
+    );
 }
 
 const styles = StyleSheet.create({
@@ -27,7 +37,7 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOpacity: 0.5,
         shadowRadius: 10,
-        shadowOffset: {width: 0, height: 0},
+        shadowOffset: { width: 0, height: 0 },
         elevation: 14,
         marginBottom: 16
     },
